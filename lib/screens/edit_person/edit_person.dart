@@ -1,23 +1,29 @@
 import 'package:blood_doner_getx/db/function/home_controller.dart';
 import 'package:blood_doner_getx/db/model/model.dart';
+import 'package:blood_doner_getx/screens/home_screen/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 
-class AddPerson extends StatelessWidget {
-  AddPerson({super.key});
+class EditPerson extends StatelessWidget {
+  EditPerson({super.key, required this.perosn});
 
+  final Personmodel perosn;
+  final HomeController controller = Get.find<HomeController>();
   final GlobalKey<FormState> formkey = GlobalKey<FormState>();
-  final nameController = TextEditingController();
-  final ageController = TextEditingController();
-  final bloodController = TextEditingController();
-  final placeController = TextEditingController();
-  final mobileController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
-    final HomeController homeController = Get.put(HomeController());
+    TextEditingController nameController =
+        TextEditingController(text: perosn.name);
+    TextEditingController ageController =
+        TextEditingController(text: perosn.age);
+    TextEditingController bloodController =
+        TextEditingController(text: perosn.bloodgroup);
+    TextEditingController placeController =
+        TextEditingController(text: perosn.place);
+    TextEditingController mobileController =
+        TextEditingController(text: perosn.mobile);
     return Scaffold(
       backgroundColor: Colors.red[50],
       appBar: AppBar(
@@ -25,7 +31,7 @@ class AddPerson extends StatelessWidget {
         backgroundColor: Colors.red[900],
         title: const Center(
             child: Text(
-          "ADD PERSON",
+          "EDIT PERSON",
           style: TextStyle(fontWeight: FontWeight.w700, color: Colors.white),
         )),
       ),
@@ -156,14 +162,22 @@ class AddPerson extends StatelessWidget {
                             backgroundColor: Colors.red[900],
                           ),
                           onPressed: () {
-                            submitclick(
-                                nameController,
-                                ageController,
-                                placeController,
-                                bloodController,
-                                mobileController,
-                                formkey,
-                                homeController);
+                            if (formkey.currentState!.validate()) {
+                              controller.updateperson(
+                                  perosn,
+                                  nameController.text,
+                                  ageController.text,
+                                  bloodController.text,
+                                  placeController.text,
+                                  mobileController.text);
+                              Get.offAll(const HomePage());
+                              Get.snackbar('Success',
+                                  'Student detials updated Successfully',
+                                  backgroundColor: Colors.green,
+                                  duration: const Duration(seconds: 2),
+                                  dismissDirection:
+                                      DismissDirection.horizontal);
+                            }
                           },
                           icon: const Icon(
                             Icons.check,
@@ -183,45 +197,5 @@ class AddPerson extends StatelessWidget {
         )),
       ),
     );
-  }
-
-  Future<void> submitclick(
-      nameController,
-      ageController,
-      bloodController,
-      placeController,
-      mobileController,
-      formkey,
-      HomeController homeController) async {
-    if (formkey.currentState!.validate()) {
-      final person = Personmodel(
-        nameController.text,
-        ageController.text,
-        bloodController.text,
-        placeController.text,
-        mobileController.text,
-      );
-      homeController.Addperson(person);
-      Get.back();
-      Get.snackbar(
-        "Success",
-        "Student information submitted successfully",
-        backgroundColor: Colors.green,
-        colorText: Colors.white,
-        overlayBlur: 1,
-        duration: const Duration(seconds: 2),
-        dismissDirection: DismissDirection.horizontal,
-      );
-    } else {
-      Get.snackbar(
-        "Error",
-        "Please fill out all the fields",
-        backgroundColor: Colors.red,
-        colorText: Colors.white,
-        overlayBlur: 1,
-        duration: const Duration(seconds: 2),
-        dismissDirection: DismissDirection.horizontal,
-      );
-    }
   }
 }

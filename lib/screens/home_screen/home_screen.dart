@@ -1,4 +1,5 @@
 import 'package:blood_doner_getx/screens/add_person/add_person.dart';
+import 'package:blood_doner_getx/screens/list_person/list_person.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -10,7 +11,7 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.red[50],
       appBar: AppBar(
-        backgroundColor: Colors.red,
+        backgroundColor: Colors.red[900],
         title: const Center(
           child: Text(
             "BLOOD DONER",
@@ -40,16 +41,17 @@ class HomePage extends StatelessWidget {
             Flexible(
               flex: 8,
               child: Container(
-                  // color: Colors.amber,
-                  // child: ListStudents(),
-                  ),
+                child: ListPersons(),
+              ),
             ),
             Flexible(
               flex: 1,
               child: Center(
                 child: ElevatedButton.icon(
                   onPressed: () {
-                    Get.to(AddPerson());
+                    Get.to(
+                      AddPerson(),
+                    );
                   },
                   icon: const Icon(Icons.bloodtype_rounded),
                   label: const Text("Add"),

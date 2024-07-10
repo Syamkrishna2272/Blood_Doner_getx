@@ -1,5 +1,4 @@
 import 'dart:async';
-
 import 'package:blood_doner_getx/db/model/model.dart';
 import 'package:blood_doner_getx/screens/home_screen/home_screen.dart';
 import 'package:flutter/material.dart';
@@ -27,7 +26,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: HomePage(),
+      home: const HomePage(),
     );
   }
 }

@@ -1,5 +1,6 @@
 import 'package:blood_doner_getx/db/function/home_controller.dart';
 import 'package:blood_doner_getx/db/model/model.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
@@ -180,7 +181,8 @@ class AddPerson extends StatelessWidget {
                   ),
                 ))
           ],
-        )),
+        )
+        ),
       ),
     );
   }
@@ -195,17 +197,17 @@ class AddPerson extends StatelessWidget {
       HomeController homeController) async {
     if (formkey.currentState!.validate()) {
       final person = Personmodel(
-        nameController.text,
-        ageController.text,
-        bloodController.text,
-        placeController.text,
-        mobileController.text,
+          nameController.text,
+          ageController.text,
+          bloodController.text,
+          placeController.text,
+          mobileController.text,
       );
       homeController.Addperson(person);
       Get.back();
       Get.snackbar(
         "Success",
-        "Student information submitted successfully",
+        "Doner information submitted successfully",
         backgroundColor: Colors.green,
         colorText: Colors.white,
         overlayBlur: 1,

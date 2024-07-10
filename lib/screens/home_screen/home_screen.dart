@@ -38,10 +38,10 @@ class HomePage extends StatelessWidget {
                 ),
               ),
             ),
-            Flexible(
+            Flexible( 
               flex: 8,
               child: Container(
-                child: ListPersons(),
+                child: const ListPersons(),
               ),
             ),
             Flexible(

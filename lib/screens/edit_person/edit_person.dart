@@ -172,7 +172,7 @@ class EditPerson extends StatelessWidget {
                                   mobileController.text);
                               Get.offAll(const HomePage());
                               Get.snackbar('Success',
-                                  'Student detials updated Successfully',
+                                  'Doner detials updated Successfully',
                                   backgroundColor: Colors.green,
                                   duration: const Duration(seconds: 2),
                                   dismissDirection:

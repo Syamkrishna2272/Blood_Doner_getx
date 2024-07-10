@@ -64,7 +64,7 @@ class ListPersons extends StatelessWidget {
                           style: const TextStyle(
                               fontWeight: FontWeight.w900, color: Colors.black),
                         ),
-                        Spacer(), // This will push the icons to the bottom
+                        Spacer(), 
                         Row(
                           mainAxisAlignment: MainAxisAlignment.end,
                           children: [
@@ -110,7 +110,7 @@ class ListPersons extends StatelessWidget {
         if (back == true) {
           Get.back();
         }
-        Get.snackbar('Deleted', 'Student details removed',
+        Get.snackbar('Deleted', 'Doner details removed', 
             backgroundColor: Colors.red,
             overlayBlur: 1,
             duration: const Duration(seconds: 2));

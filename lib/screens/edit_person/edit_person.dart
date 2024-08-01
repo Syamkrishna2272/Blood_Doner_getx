@@ -63,7 +63,7 @@ class EditPerson extends StatelessWidget {
                         autovalidateMode: AutovalidateMode.onUserInteraction,
                         validator: (value) {
                           if (value!.isEmpty) {
-                            return 'Please eneter the name';
+                            return 'Please enter the name';
                           }
                           return null;
                         },
@@ -81,7 +81,7 @@ class EditPerson extends StatelessWidget {
                         autovalidateMode: AutovalidateMode.onUserInteraction,
                         validator: (value) {
                           if (value!.isEmpty) {
-                            return 'Please eneter the Age';
+                            return 'Please enter the Age';
                           }
                           return null;
                         },
@@ -100,7 +100,7 @@ class EditPerson extends StatelessWidget {
                         autovalidateMode: AutovalidateMode.onUserInteraction,
                         validator: (value) {
                           if (value!.isEmpty) {
-                            return 'Please eneter the Blood Group';
+                            return 'Please enter the Blood Group';
                           }
                           return null;
                         },
@@ -118,7 +118,7 @@ class EditPerson extends StatelessWidget {
                         autovalidateMode: AutovalidateMode.onUserInteraction,
                         validator: (value) {
                           if (value!.isEmpty) {
-                            return 'Please eneter the place';
+                            return 'Please enter the place';
                           }
                           return null;
                         },
@@ -138,7 +138,7 @@ class EditPerson extends StatelessWidget {
                         autovalidateMode: AutovalidateMode.onUserInteraction,
                         validator: (value) {
                           if (value!.isEmpty) {
-                            return 'Please eneter the Phone number';
+                            return 'Please enter the Phone number';
                           }
                           return null;
                         },

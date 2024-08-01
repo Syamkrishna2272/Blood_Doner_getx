@@ -4,7 +4,7 @@ import 'package:blood_doner_getx/db/model/model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
+
 
 class AddPerson extends StatelessWidget {
   AddPerson({super.key});
@@ -29,6 +29,7 @@ class AddPerson extends StatelessWidget {
           "ADD PERSON",
           style: TextStyle(fontWeight: FontWeight.w700, color: Colors.white),
         )),
+       
       ),
       body: SingleChildScrollView(
         child: SafeArea(
@@ -51,6 +52,7 @@ class AddPerson extends StatelessWidget {
                         width: double.infinity,
                         // color: Colors.amber,
                       ),
+                      CircleAvatar(),
                       const SizedBox(
                         height: 15,
                       ),
@@ -58,7 +60,7 @@ class AddPerson extends StatelessWidget {
                         autovalidateMode: AutovalidateMode.onUserInteraction,
                         validator: (value) {
                           if (value!.isEmpty) {
-                            return 'Please eneter the name';
+                            return 'Please enter the name';
                           }
                           return null;
                         },
@@ -76,7 +78,7 @@ class AddPerson extends StatelessWidget {
                         autovalidateMode: AutovalidateMode.onUserInteraction,
                         validator: (value) {
                           if (value!.isEmpty) {
-                            return 'Please eneter the Age';
+                            return 'Please enter the Age';
                           }
                           return null;
                         },
@@ -95,7 +97,7 @@ class AddPerson extends StatelessWidget {
                         autovalidateMode: AutovalidateMode.onUserInteraction,
                         validator: (value) {
                           if (value!.isEmpty) {
-                            return 'Please eneter the Blood Group';
+                            return 'Please enter the Blood Group';
                           }
                           return null;
                         },
@@ -113,7 +115,7 @@ class AddPerson extends StatelessWidget {
                         autovalidateMode: AutovalidateMode.onUserInteraction,
                         validator: (value) {
                           if (value!.isEmpty) {
-                            return 'Please eneter the place';
+                            return 'Please enter the place';
                           }
                           return null;
                         },
@@ -133,7 +135,7 @@ class AddPerson extends StatelessWidget {
                         autovalidateMode: AutovalidateMode.onUserInteraction,
                         validator: (value) {
                           if (value!.isEmpty) {
-                            return 'Please eneter the Phone number';
+                            return 'Please enter the Phone number';
                           }
                           return null;
                         },
@@ -181,8 +183,7 @@ class AddPerson extends StatelessWidget {
                   ),
                 ))
           ],
-        )
-        ),
+        )),
       ),
     );
   }
@@ -197,11 +198,11 @@ class AddPerson extends StatelessWidget {
       HomeController homeController) async {
     if (formkey.currentState!.validate()) {
       final person = Personmodel(
-          nameController.text,
-          ageController.text,
-          bloodController.text,
-          placeController.text,
-          mobileController.text,
+        nameController.text,
+        ageController.text,
+        bloodController.text,
+        placeController.text,
+        mobileController.text,
       );
       homeController.Addperson(person);
       Get.back();

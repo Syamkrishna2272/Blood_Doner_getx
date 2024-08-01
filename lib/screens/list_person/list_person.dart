@@ -64,7 +64,7 @@ class ListPersons extends StatelessWidget {
                           style: const TextStyle(
                               fontWeight: FontWeight.w900, color: Colors.black),
                         ),
-                        Spacer(), 
+                        const Spacer(), 
                         Row(
                           mainAxisAlignment: MainAxisAlignment.end,
                           children: [

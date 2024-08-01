@@ -3,7 +3,6 @@ import 'package:blood_doner_getx/db/model/model.dart';
 import 'package:blood_doner_getx/screens/home_screen/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:hive/hive.dart';
 import 'package:hive_flutter/adapters.dart';
 
 Future<void> main() async {

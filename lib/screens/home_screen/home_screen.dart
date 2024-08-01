@@ -1,5 +1,6 @@
 import 'package:blood_doner_getx/screens/add_person/add_person.dart';
 import 'package:blood_doner_getx/screens/list_person/list_person.dart';
+import 'package:blood_doner_getx/screens/search/search_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -18,6 +19,17 @@ class HomePage extends StatelessWidget {
             style: TextStyle(fontWeight: FontWeight.w700, color: Colors.white),
           ),
         ),
+        actions: [
+          IconButton(
+              onPressed: () {
+                showSearch(context: context, delegate: Search());
+              },
+              icon: const Icon(
+                Icons.search,
+                size: 30,
+                color: Colors.white,
+              ))
+        ],
       ),
       body: SafeArea(
         child: Column(
@@ -38,11 +50,9 @@ class HomePage extends StatelessWidget {
                 ),
               ),
             ),
-            Flexible( 
+            const Flexible(
               flex: 8,
-              child: Container(
-                child: const ListPersons(),
-              ),
+              child: ListPersons(),
             ),
             Flexible(
               flex: 1,

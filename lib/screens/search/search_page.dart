@@ -2,8 +2,6 @@ import 'package:blood_doner_getx/db/function/home_controller.dart';
 import 'package:blood_doner_getx/screens/list_person/details_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
-import 'package:get/get_state_manager/src/simple/get_state.dart';
 
 class Search extends SearchDelegate {
   List data = [];
@@ -67,9 +65,6 @@ class Search extends SearchDelegate {
                               Get.to(Details(person: data));
                             },
                             title: Text(data.name),
-                            // leading: CircleAvatar(
-                            //   backgroundImage: FileImage(File(data.image)),
-                            // ),
                           ),
                         ),
                         const SizedBox(height: 8),

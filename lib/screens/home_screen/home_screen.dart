@@ -30,6 +30,11 @@ class HomePage extends StatelessWidget {
                 color: Colors.white,
               ))
         ],
+        leading: const Icon(
+          Icons.menu,
+          size: 30,
+          color: Colors.white,
+        ),
       ),
       body: SafeArea(
         child: Column(

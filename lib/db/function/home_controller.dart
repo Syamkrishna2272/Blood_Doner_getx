@@ -10,16 +10,15 @@
     void onInit() {
       super.onInit();
       personBox = Hive.box<Personmodel>('person_db');
-      Getpersons();
+      getpersons();
     }
 
-    Future<void> Addperson(Personmodel value) async {
-      print('add person working');
+    Future<void> addperson(Personmodel person) async {
       final personDB = Hive.box<Personmodel>('person_db');
-      await personDB.add(value);
+      await personDB.add(person);
     }
 
-    void Getpersons() {
+    void getpersons() {
       print('getperson working');
       persons.assignAll(personBox.values.toList());
       personBox.watch().listen((event) {
@@ -28,7 +27,7 @@
     }
 
     void deleteperson(Personmodel person) {
-      personBox.delete(person);
+      personBox.delete(person.key);
       print("$person deleteee");
       persons.remove(person);
     }

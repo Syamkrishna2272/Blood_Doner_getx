@@ -1,5 +1,4 @@
 import 'package:blood_doner_getx/db/function/home_controller.dart';
-import 'package:blood_doner_getx/db/model/model.dart';
 import 'package:blood_doner_getx/screens/edit_person/edit_person.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -11,90 +10,88 @@ class ListPersons extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Obx(() {
-        if (homeController.persons.isEmpty) {
-          return const Center(
-            child: Text(
-              'No Result',
-              style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
-            ),
-          );
-        } else {
-          return GridView.builder(
-            shrinkWrap: true,
-            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 2,
-              crossAxisSpacing: 10,
-              mainAxisSpacing: 10,
-            ),
-            itemCount: homeController.persons.length,
-            itemBuilder: (context, index) {
-              final person = homeController.persons[index];
-              return GestureDetector(
-                child: Card(
-                  elevation: 10,
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          'Name: ${person.name.toUpperCase()}',
-                          style: const TextStyle(
-                              fontWeight: FontWeight.w900, color: Colors.black),
-                        ),
-                        Text(
-                          'Age: ${person.age}',
-                          style: const TextStyle(
-                              fontWeight: FontWeight.w900, color: Colors.black),
-                        ),
-                        Text(
-                          'Address: ${person.bloodgroup.toUpperCase()}',
-                          style: const TextStyle(
-                              fontWeight: FontWeight.w900, color: Colors.black),
-                        ),
-                        Text(
-                          'Blood Group: ${person.place.toUpperCase()}',
-                          style: const TextStyle(
-                              fontWeight: FontWeight.w900, color: Colors.black),
-                        ),
-                        Text(
-                          'Mobile: +91 ${person.mobile}',
-                          style: const TextStyle(
-                              fontWeight: FontWeight.w900, color: Colors.black),
-                        ),
-                        const Spacer(), 
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.end,
-                          children: [
-                            IconButton(
-                              icon: const Icon(Icons.edit, color: Colors.blue),
-                              onPressed: () {
-                                Get.to(EditPerson(perosn: person));
-                              },
-                            ),
-                            IconButton(
-                              icon: const Icon(Icons.delete, color: Colors.red),
-                              onPressed: () {
-                                ondelete(person, false);
-                              },
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
+    return Obx(() {
+      if (homeController.persons.isEmpty) {
+        return const Center(
+          child: Text(
+            'No Result',
+            style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+          ),
+        );
+      } else {
+        return GridView.builder(
+          shrinkWrap: true,
+          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 2,
+            crossAxisSpacing: 10,
+            mainAxisSpacing: 10,
+          ),
+          itemCount: homeController.persons.length,
+          itemBuilder: (context, index) {
+            final person = homeController.persons[index];
+            return GestureDetector(
+              child: Card(
+                elevation: 10,
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'Name: ${person.name.toUpperCase()}',
+                        style: const TextStyle(
+                            fontWeight: FontWeight.w900, color: Colors.black),
+                      ),
+                      Text(
+                        'Age: ${person.age}',
+                        style: const TextStyle(
+                            fontWeight: FontWeight.w900, color: Colors.black),
+                      ),
+                      Text(
+                        'Address: ${person.bloodgroup.toUpperCase()}',
+                        style: const TextStyle(
+                            fontWeight: FontWeight.w900, color: Colors.black),
+                      ),
+                      Text(
+                        'Blood Group: ${person.place.toUpperCase()}',
+                        style: const TextStyle(
+                            fontWeight: FontWeight.w900, color: Colors.black),
+                      ),
+                      Text(
+                        'Mobile: +91 ${person.mobile}',
+                        style: const TextStyle(
+                            fontWeight: FontWeight.w900, color: Colors.black),
+                      ),
+                      const Spacer(),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          IconButton(
+                            icon: const Icon(Icons.edit, color: Colors.blue),
+                            onPressed: () {
+                              Get.to(EditPerson(perosn: person));
+                            },
+                          ),
+                          IconButton(
+                            icon: const Icon(Icons.delete, color: Colors.red),
+                            onPressed: () {
+                              ondelete(perosn: person, back: false);
+                            },
+                          ),
+                        ],
+                      ),
+                    ],
                   ),
                 ),
-              );
-            },
-          );
-        }
-      }),
-    );
+              ),
+            );
+          },
+        );
+      }
+    });
   }
 
-  ondelete(Personmodel perosn, bool back) {
+  ondelete({perosn, back}) {
     Get.defaultDialog(
       title: 'Confirm Deletion',
       titleStyle: const TextStyle(fontWeight: FontWeight.bold),
@@ -110,7 +107,7 @@ class ListPersons extends StatelessWidget {
         if (back == true) {
           Get.back();
         }
-        Get.snackbar('Deleted', 'Doner details removed', 
+        Get.snackbar('Deleted', 'Doner details removed',
             backgroundColor: Colors.red,
             overlayBlur: 1,
             duration: const Duration(seconds: 2));

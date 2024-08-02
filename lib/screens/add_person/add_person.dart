@@ -50,9 +50,7 @@ class AddPerson extends StatelessWidget {
 
                         height: 120,
                         width: double.infinity,
-                        // color: Colors.amber,
                       ),
-                      CircleAvatar(),
                       const SizedBox(
                         height: 15,
                       ),
@@ -204,7 +202,7 @@ class AddPerson extends StatelessWidget {
         placeController.text,
         mobileController.text,
       );
-      homeController.Addperson(person);
+      homeController.addperson(person);
       Get.back();
       Get.snackbar(
         "Success",
